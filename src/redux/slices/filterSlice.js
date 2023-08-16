@@ -9,9 +9,12 @@ const filterSlice = createSlice({
     reducers:{
         changeFilter:(state,action)=>{
             state.filterObject = action.payload
+        },
+        resetFilters:(state,action)=>{
+            state.filterObject = {name:"none",class:""}
         }
     }
 
 })
 export default filterSlice.reducer
-export const {changeFilter} = filterSlice.actions
+export const {changeFilter,resetFilters} = filterSlice.actions

@@ -24,9 +24,9 @@ const FilterContainer = () => {
   return (
     <div style={{ display: 'flex', gap: '20px',flexDirection:"column",alignItems:"center" }}>
       <button onClick={handlePrevFilter}>prev</button>
-      <FilterImage />
+      
       <button onClick={handleNextFilter}>next</button>
-      <CustomFilter />
+     
     </div>
   );
 };

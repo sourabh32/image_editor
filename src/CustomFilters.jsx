@@ -41,10 +41,14 @@ const CustomFilter = () => {
   
 
   const dispatch = useDispatch()
-//   useEffect(()=>{
-//     dispatch(customFilter(filterStyle))
-
-//   },[filterValues])
+  const clearup = () =>{
+    setFilterValues(initial)
+    
+  }
+  useEffect(()=>{
+    dispatch(customFilter(filterStyle))
+   
+  },[filterValues])
 
   return (
     <div>

@@ -10,9 +10,13 @@ const customSlice = createSlice({
         customFilter:(state,action)=>{
             console.log(action.payload)
             state.customObject = action.payload
+        },
+        resetCustom:(state,action)=>{
+            state.customObject ={}
         }
+        
     }
 
 })
 export default customSlice.reducer
-export const {customFilter} = customSlice.actions
+export const {customFilter,resetCustom} = customSlice.actions
