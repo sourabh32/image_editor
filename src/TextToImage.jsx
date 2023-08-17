@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { ChakraProvider, Container, Heading, Box, Button, Image, Input } from '@chakra-ui/react';
+import { ChakraProvider, Container, Heading, Box, Button, Image, Input, HStack, Stack } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { doIntendedTask } from './redux/slices/intendedTask';
 import { changeImage, resetImage } from './redux/slices/imageSlice';
+import GeneratedImage from './components.jsx/GeneratedImage';
 
 function TextToImage() {
 const [prompt,setPrompt] = useState("")
   const dispatch = useDispatch();
-  const imageData = useSelector((state) => state.intendedReducer.imageData);
-  const status = useSelector((state) => state.intendedReducer.status);
-  const error = useSelector((state) => state.intendedReducer.error);
-  const photo = useSelector((state)=> state.imageReducer.imageObject)
+  
+  
 
 //   const handleTryAnother = () => {
 //     dispatch(resetImage())
@@ -32,20 +31,35 @@ const [prompt,setPrompt] = useState("")
   };
 
   return (
-   
-      <Container maxW="container.lg" centerContent>
-        <Heading as="h1" size="xl" my={6}>
-          text To image
-        </Heading>
-        <input value={prompt} placeholder='enter desciption' type="text" onChange={(e)=>setPrompt(e.target.value)} />
-        <Button colorScheme="green" onClick={handleFetchImage}>
-            fetch results
-          </Button>
-       
-        {status === 'loading' && <p>Loading...</p>}
-      {status === 'succeeded' && <img src={imageData} alt="Processed Image" />}
-      {status === 'failed' && <p>Error: {error}</p>}
-      </Container>
+    <Box
+    fontFamily="poppins"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    p="5"
+    minHeight="80vh"
+    mx="auto"
+    textAlign="center"
+  >
+    <Heading as="h1" size="lg" my={2}>
+      Text To Image
+    </Heading>
+
+    <GeneratedImage   />
+
+    <Stack w="90%" gap="5" direction={["column", "row"]} mt={4}>
+      <Input
+        value={prompt}
+        placeholder="Enter description..."
+        type="text"
+        onChange={(e) => setPrompt(e.target.value)}
+      />
+      <Button colorScheme="green" onClick={handleFetchImage}>
+        Generate
+      </Button>
+    </Stack>
+  </Box>
+
     
   );
 }

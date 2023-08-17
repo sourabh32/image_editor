@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { customFilter } from './redux/slices/customSlice';
+import FilterImage from './FilterImage';
 const initial = {
     brightness: 100,
     contrast: 100,
@@ -52,7 +53,7 @@ const CustomFilter = () => {
 
   return (
     <div>
-     
+     <FilterImage />
       <div>
         <label>
           Brightness:
